@@ -1,0 +1,12 @@
+<%= link_to 'Back to Video', @video %>
+<div>
+  <br />
+  <strong><%= @comment.subject %></strong><br />
+  <%= @comment.body %>
+</div>
+
+<div>
+  <br />
+  <%= link_to 'Edit', edit_video_comment_path(@video, @comment) %>
+  <%= link_to 'Delete', video_comment_path(@video, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

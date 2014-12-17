@@ -1,0 +1,17 @@
+<%= form_for [@video, @comment] do |f| %>
+  <div>
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div>
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </div>
+  <div>
+    <% unless @comment.new_record? %>
+      <%= f.submit 'Update Comment' %>
+    <% else %>
+      <%= f.submit 'Create Comment' %>
+    <% end %>
+  </div>
+<% end %>

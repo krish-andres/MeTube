@@ -6,6 +6,7 @@ class VideosController < ApplicationController
   end
 
   def show
+    @comments = @video.comments
   end
 
   def new

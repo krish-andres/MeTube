@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'videos#index'
 
   resources :videos do
-    resources :comments
+    resources :comments, except: [:index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
