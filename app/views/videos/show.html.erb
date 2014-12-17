@@ -1,0 +1,9 @@
+<%= link_to 'All Videos', videos_path %>
+<h1><%= @video.title %></h1>
+<h3><%= @video.youtube_url %></h3>
+<p><%= @video.description %></p>
+
+<div>
+  <%= link_to 'Edit', edit_video_path(@video) %>
+  <%= link_to 'Delete', @video, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

@@ -1,0 +1,22 @@
+<%= form_for @video do |f| %>
+  <div>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :youtube_url %><br />
+    <%= f.text_field :youtube_url %>
+  </div>
+  <div>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <% unless @video.new_record? %>
+      <%= f.submit 'Update Video' %>
+    <% else %>
+      <%= f.submit 'Add Video' %>
+    <% end %>
+  </div>
+<% end %>
+

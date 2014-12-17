@@ -1,0 +1,13 @@
+<h1>All Videos</h1>
+<div>
+  <%= link_to 'Add New Video', new_video_path %>
+</div>
+<div>
+  <ul>
+    <% @videos.each do |video| %>
+      <li>
+        <%= link_to video.title, video %>
+      </li>
+    <% end %>
+  </ul>
+</div>
