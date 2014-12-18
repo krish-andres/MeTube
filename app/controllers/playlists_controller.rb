@@ -2,11 +2,12 @@ class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
 
   def index
-    @playlists = Playlist.all    
+    @playlists = Playlist.all.order("name ASC") 
   end
 
   def show 
     @videos = @playlist.videos
+    @comments = @playlist.comments.order("created_at DESC")
   end
 
   def new

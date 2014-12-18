@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'videos#index'
 
-  resources :videos do
+  resources :videos, :playlists do
     resources :comments, except: [:index]
   end
 

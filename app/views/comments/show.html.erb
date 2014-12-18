@@ -1,4 +1,4 @@
-<%= link_to 'Back to Video', @video %>
+<%= link_to 'Back', @poly_var %>
 <div>
   <br />
   <strong><%= @comment.subject %></strong><br />
@@ -7,6 +7,11 @@
 
 <div>
   <br />
-  <%= link_to 'Edit', edit_video_comment_path(@video, @comment) %>
-  <%= link_to 'Delete', video_comment_path(@video, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if params[:video_id] %>
+    <%= link_to 'Edit', edit_video_comment_path(@poly_var, @comment) %>
+    <%= link_to 'Delete', video_comment_path(@poly_var, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% elsif params[:playlist_id] %>
+    <%= link_to 'Edit', edit_playlist_comment_path(@poly_var, @comment) %>
+    <%= link_to 'Delete', playlist_comment_path(@poly_var, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 </div>

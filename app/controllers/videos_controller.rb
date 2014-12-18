@@ -2,11 +2,11 @@ class VideosController < ApplicationController
   before_action :find_video, only: [:show, :edit, :update, :destroy]
 
   def index
-    @videos = Video.all    
+    @videos = Video.all.order("title ASC")
   end
 
   def show
-    @comments = @video.comments
+    @comments = @video.comments.order("created_at DESC")
   end
 
   def new

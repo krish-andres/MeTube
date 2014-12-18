@@ -1,7 +1,11 @@
 <header>
-  <h2>New Comment For <%= link_to @video.title, @video %></h2>
+  <% if params[:video_id] %>
+    <h2>New Comment For <%= link_to @poly_var.title, @poly_var %></h2>
+  <% elsif params[:playlist_id] %>
+    <h2>New Comment For <%= link_to @poly_var.name, @poly_var %></h2>
+  <% end %>
 </header>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', @video %>
+<%= link_to 'Back', @poly_var %>
