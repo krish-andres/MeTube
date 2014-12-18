@@ -1,6 +1,6 @@
 <%= link_to 'All Videos', videos_path %>
-<h1><%= @video.title %></h1>
-<iframe width="560" height="315" src="<%= @video.youtube_url %>" frameborder="0" allowfullscreen></iframe>
+<h2><%= @video.title %></h2>
+<iframe width="560" height="315" src="//www.youtube.com/embed/<%= @video.youtube_url %>" frameborder="0" allowfullscreen></iframe>
 <p><%= @video.description %></p>
 
 <div>

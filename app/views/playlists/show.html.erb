@@ -1,0 +1,16 @@
+<header>
+  <h2><%= @playlist.name %></h2>
+</header>
+<%= link_to 'Back', playlists_path %> || <%= link_to 'Edit', edit_playlist_path(@playlist) %> || <%= link_to 'Delete', @playlist, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<div>
+  <ul>
+    <% @videos.each do |video| %>
+      <li>
+        <strong><%= video.title %></strong><br /><br />
+        <iframe width="560" height="315" src="//www.youtube.com/embed/<%= video.youtube_url %>" frameborder="0" allowfullscreen></iframe><br />
+        <strong>Description: </strong><%= video.description %>
+      </li>
+    <% end %>
+  </ul>
+</div>
