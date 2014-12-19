@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+
+  get 'signin' => 'sessions#new'
+  post 'signin' => 'sessions#create'
+  get 'signout' => 'sessions#destroy'
+  get 'signup' => 'users#new'
   resources :users
 
   root 'videos#index'
