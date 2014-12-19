@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
+  has_many :playlists, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :videos, dependent: :destroy
   validates_confirmation_of :password
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: /\A\S+@\S+\z/
 
-  has_many :playlists
-  has_many :comments
+
 
   def encrypt_password
     self.password_salt = BCrypt::Engine.generate_salt
