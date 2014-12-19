@@ -12,5 +12,9 @@ class ApplicationController < ActionController::Base
     redirect_to signin_url unless current_user
   end
 
+  def current_user?(user)
+    current_user == user
+  end
+  helper_method :current_user?
 
 end

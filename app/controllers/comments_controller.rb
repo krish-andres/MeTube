@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :require_signin, except: [:show, :index]
   before_action :set_polymorphic_variable
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :require_correct_user, only: [:edit, :update, :destroy]
 
   def show
   end
@@ -51,8 +52,13 @@ class CommentsController < ApplicationController
     @comment = @poly_var.comments.find(params[:id])    
   end
 
-
   def comment_params
     params.require(:comment).permit(:subject, :body)
+  end
+
+  def require_correct_user
+    unless current_user?(@comment.user)
+      redirect_to root_url, alert: "Unauthorized Access!"
+    end
   end
 end

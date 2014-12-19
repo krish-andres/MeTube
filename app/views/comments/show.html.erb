@@ -9,11 +9,13 @@
 
 <div>
   <br />
-  <% if params[:video_id] %>
-    <%= link_to 'Edit', edit_video_comment_path(@poly_var, @comment) %>
-    <%= link_to 'Delete', video_comment_path(@poly_var, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% elsif params[:playlist_id] %>
-    <%= link_to 'Edit', edit_playlist_comment_path(@poly_var, @comment) %>
-    <%= link_to 'Delete', playlist_comment_path(@poly_var, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if current_user?(@comment.user) %>
+    <% if params[:video_id] %>
+      <%= link_to 'Edit', edit_video_comment_path(@poly_var, @comment) %>
+      <%= link_to 'Delete', video_comment_path(@poly_var, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% elsif params[:playlist_id] %>
+      <%= link_to 'Edit', edit_playlist_comment_path(@poly_var, @comment) %>
+      <%= link_to 'Delete', playlist_comment_path(@poly_var, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   <% end %>
 </div>

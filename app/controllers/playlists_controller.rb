@@ -1,6 +1,7 @@
 class PlaylistsController < ApplicationController
   before_action :require_signin
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
     # @playlists = Playlist.all.order("name ASC") 
@@ -53,6 +54,11 @@ class PlaylistsController < ApplicationController
     params.require(:playlist).permit(:name, video_ids: [])  
   end
 
+  def require_correct_user
+    unless current_user?(@playlist.user)
+      redirect_to root_url, alert: "Unauthorized Access!"
+    end
+  end
 
 
 
