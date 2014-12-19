@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_signin, except: [:show, :index]
   before_action :set_polymorphic_variable
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
@@ -11,6 +12,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @poly_var.comments.new(comment_params)
+    @comment.user = current_user
     if @comment.save
       redirect_to @poly_var, notice: "Comment Successfully Created!"
     else

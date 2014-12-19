@@ -8,5 +8,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def require_signin
+    redirect_to signin_url unless current_user
+  end
+
 
 end

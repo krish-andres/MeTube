@@ -23,6 +23,8 @@
       <li>
         <strong><%= link_to comment.subject, playlist_comment_path(@playlist, comment) %></strong><br />
         <%= comment.body %>
+        <strong>By: <%= comment.user.email %></strong><br />
+        <%= time_ago_in_words(comment.created_at) %> ago
       </li>
     <% end %>
   </ul>

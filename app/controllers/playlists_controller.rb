@@ -1,8 +1,10 @@
 class PlaylistsController < ApplicationController
+  before_action :require_signin
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
 
   def index
-    @playlists = Playlist.all.order("name ASC") 
+    # @playlists = Playlist.all.order("name ASC") 
+    @playlists = current_user.playlists.order("name ASC")
   end
 
   def show 
@@ -16,6 +18,7 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(playlist_params)
+    @playlist.user = current_user
     if @playlist.save
       redirect_to @playlist, notice: "Playlist Successfully Created!"
     else

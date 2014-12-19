@@ -2,7 +2,9 @@
 <div>
   <br />
   <strong><%= @comment.subject %></strong><br />
-  <%= @comment.body %>
+  <%= @comment.body %><br />
+  <strong>By: <%= @comment.user.email %></strong><br />
+  <%= time_ago_in_words(@comment.created_at) %> ago
 </div>
 
 <div>

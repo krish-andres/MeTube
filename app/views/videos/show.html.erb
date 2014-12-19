@@ -10,12 +10,16 @@
 
 <div>
   <h3>Comments</h3>
-  <%= link_to 'Add New Comment', new_video_comment_path(@video) %>
+  <% if current_user %>
+    <%= link_to 'Add New Comment', new_video_comment_path(@video) %>
+  <% end %>
   <ul>
     <% @comments.each do |comment| %>
       <li>
         <strong><%= link_to comment.subject, video_comment_path(@video, comment) %></strong><br />
-        <%= comment.body %>
+        <%= comment.body %><br />
+        <strong>By: <%= comment.user.email %></strong><br />
+        <%= time_ago_in_words(comment.created_at) %> ago
       </li>
     <% end %>
   </ul>
