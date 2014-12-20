@@ -1,0 +1,11 @@
+<header>
+  <h2>Users</h2>
+</header>
+
+<div>
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= link_to user.email, user %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,19 +1,9 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f| %>
-  <div>
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
-  <div>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= f.submit 'Sign Up' %>
-  </div>
-<% end %>
+<header>
+  <h2>Sign Up</h2>
+</header>
+<%= render 'form' %>
 
+<div>
+  <%= link_to 'Cancel', root_path %>
+  <%= link_to 'Sign In', signin_path %>
+</div>

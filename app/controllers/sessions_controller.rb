@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
 
   def create
     if @user = User.authenticate(params[:email], params[:password])
-      flash[:notice] = "Successfully Signed In!"
       session[:user_id] = @user.id
-      redirect_to root_path
+      flash[:notice] = "Successfully Signed In!"
+      redirect_to root_url
     else
       flash.now[:alert] = "Invalid Email/Password Combination!"
       render :new

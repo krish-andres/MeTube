@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_signin
-    redirect_to signin_url unless current_user
+    unless current_user
+      redirect_to signin_url, notice: "Please Sign In First"
+    end
   end
 
   def current_user?(user)

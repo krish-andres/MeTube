@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Metube</title>
+  <title>MeTube</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,12 +12,14 @@
       <%= link_to 'Sign In', signin_path %>
       <%= link_to 'Sign Up', signup_path %>    
     <% else %>
-      <%= current_user.email %>
+      <%= link_to current_user.email, current_user %>
       <%= link_to 'Sign Out', signout_path %>
     <% end %>
   </nav>
 
-<%= yield %>
+  <h1><%= link_to 'MeTube', root_path %></h1>
+
+  <%= yield %>
 
 </body>
 </html>
