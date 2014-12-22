@@ -7,17 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav>
-    <% unless current_user %>
-      <%= link_to 'Sign In', signin_path %>
-      <%= link_to 'Sign Up', signup_path %>    
-    <% else %>
-      <%= link_to current_user.email, current_user %>
-      <%= link_to 'Sign Out', signout_path %>
-    <% end %>
-  </nav>
-
-  <h1><%= link_to 'MeTube', root_path %></h1>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <%= link_to 'MeTube', root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav pull-right">
+          <% unless current_user %>
+            <li><%= link_to 'Sign In', signin_path %></li>
+            <li><%= link_to 'Sign Up', signup_path %></li>
+          <% else %>
+            <li><%= link_to current_user.email, current_user %></li>
+            <li><%= link_to 'Sign Out', signout_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <%= yield %>
 
